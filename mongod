@@ -1,0 +1,1 @@
+mogod --bind_ip=$IP -dbpath=data --nojournal --rest "$@"
