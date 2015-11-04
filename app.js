@@ -1,6 +1,13 @@
 var app = angular.module('flapperNews', []);
 
-app.controller('MainCtrl', ['$scope', function($scope){
+app.factory('posts', [function() {
+  var o = {
+    posts: []
+  };
+  return o;    
+}]);
+
+app.controller('MainCtrl', ['$scope', 'posts', function($scope, posts){
     
     $scope.posts = [
         {title: 'post 1', upvotes: 5},
@@ -9,6 +16,7 @@ app.controller('MainCtrl', ['$scope', function($scope){
         {title: 'post 4', upvotes: 9},
         {title: 'post 5', upvotes: 4}
         ];
+    $scope.posts = posts.posts;
         
     $scope.addPost = function(){
         if(!$scope.title || $scope.title === '') { return; }
